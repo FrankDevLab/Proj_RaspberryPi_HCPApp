@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "iotapp",
+        "description": "Smart Living IoT App",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#iotapp-Display",
+        "navigationComponentName": "iotapp",
+        "intentSemanticObject": "iotapp",
+        "intentAction": "Display",
+        "html5ApplicationName": "iotapp",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "GRP_IoT"
+        ],
+        "contentPackages": [
+            "CAT_IoT"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Frank IoT Lab",
+        "subtitle": "Smart Living",
+        "searchKeywords": "Frank IoT Lab,Smart Living",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

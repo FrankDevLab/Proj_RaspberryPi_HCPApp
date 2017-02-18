@@ -1,0 +1,25 @@
+.green {
+    background-color: #66FF33;
+}
+
+.red {
+    background-color: #FF3300;
+}
+
+.yellow {
+    background-color: #FFFF66;
+}
+
+.class_PanelC {
+    margin-left: 50px;
+    horizental-align: right;
+}
+
+#panelid .sapUiPanelTitle {
+    color: blue
+}
+
+
+/* if you just put a space between the selectors, styles will apply to all children (and children of children) of the first. 
+So in this case, any child element of #main_text with the class name .title . If you use > instead of a space, it will only select the direct child of the element, 
+and not children of children */

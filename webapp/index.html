@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+<!-- 		<script src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js" -->
+		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m,sap.ui.commons,sap.ui.table,sap.ui.ux3,sap.ui.vbm,sap.viz"
+				data-sap-ui-theme="sap_goldreflection"
+				data-sap-ui-resourceroots='{"iotapp": "./"}'>
+		<!--		data-sap-ui-theme="sap_bluecrystal"> -->
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		
+		<link rel="stylesheet" href="css/app.css">
+
+		<script>
+				// sap.ui.localResources("iotapp");
+				
+				// **************************************************************************
+				// Instantiate view 'epmproductsApp.ProductList.view.js' and add it to ux3 shell
+				// **************************************************************************
+				// var app = new sap.m.App({initialPage:"idDHT221"});
+				var view_pi = sap.ui.view({id:"idDHT221", viewName:"iotapp.view.DHT22", type:sap.ui.core.mvc.ViewType.JS});
+				
+				var oImage = new sap.ui.commons.Image("i1");
+				oImage.setSrc("images/Logo.png");
+				oImage.setTooltip("Summer 2001, an syrphid fly on a chrysantemum.");
+				oImage.setDecorative(false);
+				
+				// **************************************************************************
+				// Create the ux3 shell
+				// **************************************************************************
+				var oShell = new sap.ui.ux3.Shell({
+							appTitle : "Frank's IoT Lab - V1.0.3",
+							appIcon: "images/Logo.png",
+							appIconTooltip: "Frank's logo",
+							showFeederTool : false,
+							showInspectorTool : false,
+							showSearchTool : false,
+							showLogoutButton : true,
+							content: view_pi,
+							headerItems: [new sap.ui.commons.TextView({text:"User Name",tooltip:"U.Name"}),
+							              new sap.ui.commons.Button({text:"Personalize",tooltip:"Personalize",press:function(oEvent){alert("Here could open an personalize dialog");}}),
+														new sap.ui.commons.MenuButton({
+															text: "Help",
+															tooltip: "Help Menu",
+															menu: new sap.ui.commons.Menu("menu1",{items:[
+																new sap.ui.commons.MenuItem("menuitem1",{text:"Help"}),
+																new sap.ui.commons.MenuItem("menuitem2",{text:"Report Incident"}),
+																new sap.ui.commons.MenuItem("menuitem3",{text:"About"})]})
+														})],
+							worksetItems : [ new sap.ui.ux3.NavigationItem("WI_PI",{key:"wi_pi",text:"Raspberry Pi"}),
+													     new sap.ui.ux3.NavigationItem("WI_DOC",{key:"wi_doc",text:"Documentation"})],
+						  worksetItemSelected: function(oEvent){
+								var sId = oEvent.getParameter("id");
+								var oShell = oEvent.oSource;
+								switch (sId) {
+									case "WI_PI":
+										oShell.setContent(view_pi);
+										break;
+									case "WI_DOC":
+										oShell.setContent(oImage);
+										break;
+									default:								
+										break;
+								}
+						  }
+				});
+							
+				// set the initial content of the Shell
+				// oShell.setContent(view);
+				
+				// place the Shell into the <div> element defined below 
+				oShell.placeAt("content");
+				// app.addPage(view);
+				// app.placeAt("content");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>
