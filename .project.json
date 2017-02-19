@@ -7,7 +7,7 @@
     "targetFolder": "dist",
     "sourceFolder": "webapp",
     "buildRequired": true,
-    "lastBuildDateTime": "Sat, 18 Feb 2017 07:20:32 GMT"
+    "lastBuildDateTime": "Sun, 19 Feb 2017 00:50:26 GMT"
   },
   "generation": [
     {
@@ -38,6 +38,6 @@
   "hcpdeploy": {
     "account": "p1940707405trial",
     "name": "iotapp",
-    "lastVersionWeTriedToDeploy": "1.0.1"
+    "lastVersionWeTriedToDeploy": "1.0.2"
   }
 }

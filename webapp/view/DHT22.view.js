@@ -120,6 +120,18 @@ sap.ui.jsview("iotapp.view.DHT22", {
 		oPanel_T.addContent(oTable);
 		oPanel.addContent(oPanel_T);
 		oPanel.addContent(oPanel_C);
+		
+		var gmap = '<div id="googlemap" style="width:100%;height:350px;"></div>' + 
+		  '<script>function myMap()' +
+		  '{var AGL = {lat: -37.816786, lng: 144.951028};' +
+		  ' var map = new google.maps.Map(document.getElementById("googlemap"), {zoom: 15,center: AGL});' +
+		  ' var marker = new google.maps.Marker({position: AGL, map: map, label:"You are Here"});}</script>' +
+		  '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClJffM9RAQlMN2nonUjnLHp_0uLL3Ifpw&callback=myMap"></script>';		
+		
+	    var gmaphtml = new sap.ui.core.HTML();
+	    gmaphtml.setContent(gmap);
+
+		oPanel_M.addContent(gmaphtml);
 		oPanel.addContent(oPanel_M);		
 //		// create map and bind to model
 //		var oVBI = new sap.ui.vbm.GeoMap({
