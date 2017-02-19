@@ -119,6 +119,88 @@ sap.ui.jsview("iotapp.view.DHT22", {
 		//Add the form to the panels content area
 		oPanel_T.addContent(oTable);
 		oPanel.addContent(oPanel_T);
+		
+        // var oBusinessData = [ {
+        //     Country : "Canada",
+        //     revenue : 410.87,
+        //     profit : -141.25,
+        //     population : 34789000
+        //   }, {
+        //     Country : "China",
+        //     revenue : 338.29,
+        //     profit : 133.82,
+        //     population : 133972485
+        //   }, {
+        //     Country : "France",
+        //     revenue : 487.66,
+        //     profit : 348.76,
+        //     population : 65350000
+        //   }, {
+        //     Country : "Germany",
+        //     revenue : 470.23,
+        //     profit : 217.29,
+        //     population : 81799600
+        //   }, {
+        //     Country : "India",
+        //     revenue : 170.93,
+        //     profit : 117.00,
+        //     population : 1210193422
+        //   }, {
+        //     Country : "United States",
+        //     revenue : 905.08,
+        //     profit : 609.16,
+        //     population : 313490000
+        //   } ];
+         
+        // var oModel_C = new sap.ui.model.json.JSONModel();
+        // oModel_C.setData({businessData : oBusinessData});
+        
+        var oModel_C = new sap.ui.model.json.JSONModel();
+        oModel_C.loadData("model/ChartData.json");
+        
+        var dataset = new sap.viz.ui5.data.FlattenedDataset({
+                     dimensions : [ {
+                       axis : 1,
+                       name : 'Country',
+                       value : "{Country}"
+                     } ],
+
+                     measures : [ {
+                       group : 1,
+                       name : 'Population',
+                       value : '{population}'
+                     }, {
+                       group : 2,
+                       name : 'Profit',
+                       value : '{profit}'
+                     }, {
+                       group : 3,
+                       name : 'Revenue',
+                       value : '{revenue}'
+                     } ],
+                     data : {
+                       path: "/businessData",
+                       factory : function() {
+                       }
+                     } 
+                   });
+
+                   var mainCoyBubbleChart = new sap.viz.ui5.Bubble({
+                     id : "bubble",
+                     width : "80%",
+                     height : "400px",
+                     plotArea : {
+                     },
+                     title : {
+                       visible : true,
+                       text : 'Profit and Revenue By Country'
+                     },
+                     dataset : dataset
+                   });
+                   mainCoyBubbleChart.setModel(oModel_C);
+		
+		oPanel_C.addContent(mainCoyBubbleChart);		
+		
 		oPanel.addContent(oPanel_C);
 		
 		var gmap = '<div id="googlemap" style="width:100%;height:350px;"></div>' + 
